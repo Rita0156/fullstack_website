@@ -4,6 +4,8 @@ const {connection}=require("./confing/db.js");
 
 const {authController}=require("./Routs/authRout.js");
 const {blogConroller}=require("./Routs/blogRout.js");
+require('dotenv').config();
+const Port=process.env.PORT||3030
 
 const app=express();
 app.use(express.json());
@@ -21,7 +23,7 @@ app.use("/blog",blogConroller);
 
 
 
-app.listen(7500,async()=>{
+app.listen(Port,async()=>{
  try{
      await connection
      console.log("Connected to db");
