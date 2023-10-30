@@ -10,10 +10,12 @@ app.get("/",(req,res)=>{
 })
 app.post("/signup",async (req,res)=>{
      const payload=req.body()
+     console.log(payload)
      const new_user=new AuthModel(payload)
      await new_user.save()
      res.send("signup successfull")
 })
+//
 
 
 app.listen(7000,async()=>{
