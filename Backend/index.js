@@ -9,15 +9,18 @@ app.get("/",(req,res)=>{
     res.send("app is working")
 });
 app.post("/create",(req,res)=>{
-    let c=req.body
+    let c=req.body()
 
     console.log(c);
     res.send("product is created");
 })
 app.post("/signup",async(req,res)=>{
-     let payload=req.body();
-     console.log(payload);
-     const new_user = AuthModel(payload);
+    const result=AuthModel.find()
+    console.log(result)
+     let user=req.body();
+
+     console.log(user);
+     const new_user =new AuthModel({...result,user});
      await new_user.save();
      res.send("signup successfull");
 });
